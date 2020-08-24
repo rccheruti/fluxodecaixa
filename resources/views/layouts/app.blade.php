@@ -75,11 +75,16 @@
 
         <main class="py-4">
             @yield('content')
-            @yield('menu')
-            @yield('modalEntrada')
-            @yield('modalRelEntradas')
-            @yield('modalSaidas')
-            @yield('modalRelSaidas')
+            @yield('modalRegistros')
+            @yield('modalRelatorios')
+            @yield('modalConfiguracoes')
+            @yield('modalConfiguracoesLogo')
+            @yield('modalApagadoComSucesso')
+            @yield('modalSalvadoComSucesso')
+            @yield('modalApagarRegistros')
+
+            @yield('tabelas')
+
 
         </main>
     </div>

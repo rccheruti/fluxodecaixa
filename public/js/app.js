@@ -4370,7 +4370,7 @@ module.exports = {
       }
     } // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
-    // todo (fat): these should probably be refactored out of modal.js
+    // todo (fat): these should probably be refactored out of main.js
     // ----------------------------------------------------------------------
     ;
 
@@ -37331,8 +37331,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\roger\Projetos\Barbearia\fluxoCaixa\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\roger\Projetos\Barbearia\fluxoCaixa\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\roger\Projetos\fluxodecaixa\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\roger\Projetos\fluxodecaixa\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @extends('layouts.modal')
+@extends('tabelas')
 @php($title = 'Home')
 @section('content')
 <div class="container">
@@ -22,14 +23,14 @@
 
                         <div class="card-deck">
                         <div class="card border border-primary">
-                            <a href="/registrar" class="btn btn-sm btn-primary" type="button" >Registrar</a>
+                            <button class="btn btn-sm btn-primary" type="button" onclick="registroModal()">Registrar</button>
                         </div>
                         <div class="card border border-primary">
-                            <a href="/relatorios" class="btn btn-sm btn-primary"  type="button">Relatórios</a>
+                            <button class="btn btn-sm btn-primary"  type="button" onclick="relatoriosModal()">Relatórios</button>
                         </div>
-                        @if(Auth::user()->name === 'Roger')
+                        @if(Auth::user()->name === 'admin')
                             <div class="card border border-warning">
-                                 <a href="/config" class="btn btn-sm btn-warning text-dark"  type="button">Configurações</a>
+                                <button class="btn btn-sm btn-warning text-dark"  type="button" onclick="configuracoesModal()">Configurações</button>
                             </div>
                         @endif
                         </div>
@@ -38,4 +39,21 @@
         </div>
     </div>
 </div>
+@endsection
+@section('javascript')
+    <script type="text/javascript">
+
+        function registroModal() {
+            console.log('Registrar');
+            $('#registros').modal('show');
+        }
+        function relatoriosModal() {
+            console.log('Relatório');
+            $('#relatorios').modal('show');
+        }
+        function configuracoesModal() {
+            console.log('Configurações');
+            $('#configuracoes').modal('show');
+        }
+    </script>
 @endsection
