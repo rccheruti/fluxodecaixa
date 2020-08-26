@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDfaValuesTable extends Migration
+class CreateTiposTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateDfaValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dfa_values', function (Blueprint $table) {
+        Schema::create('tipos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->float('valor');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('tipo');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateDfaValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dfa_values');
+        Schema::dropIfExists('tipos');
     }
 }

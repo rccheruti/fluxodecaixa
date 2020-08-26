@@ -16,18 +16,17 @@ class ImgController extends Controller
 
     public function indexConfig(){
         $img = Imagens::all();
-        return view('config', compact('img'));
+        return view('layouts.modal', compact('img'));
 
     }
 
     public function store(Request $request)
     {
-
         $path = $request->file('input')->store('imagens', 'public');
         $img = new Imagens();
         $img->file = $path;
         $img->save();
-        return redirect('/config');
+        return redirect('/home');
 
     }
     public function destroy($id)
@@ -38,7 +37,7 @@ class ImgController extends Controller
             Storage::disk('public')->delete($input);
             $img->delete();
         }
-        return redirect('/config');
+        return redirect('/home');
     }
 
 
