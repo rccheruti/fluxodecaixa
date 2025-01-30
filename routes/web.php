@@ -1,46 +1,27 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-Route::get('/','ImgController@index');
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::middleware('auth')->get('/user', function (Request $request) {
-    return $request->user();
-});
-//Grupo protegido pelo auth
-Route::middleware('auth')->group(function(){
-
-    Route::get('/home', 'HomeController@index')->name('home');
-
-    Route::get('/registrar', 'RegistrarController@index');
-    Route::post('/registrar', 'RegistrarController@registro');
-    Route::put('/registrar/{id}', 'RegistrarController@registroEdit');
-    Route::get('/registrar/{id}', 'RegistrarController@registroDelete');
-
-    Route::get('/find/{id}', 'RegistrarController@findRegistro')->name('find');
-    Route::get('/tipos', 'RegistrarController@tr');
-
-//Controllers de Relatórios
-
-    Route::get('/relatorios', 'RelatoriosController@relatorios');
-    Route::post('/relatorios', 'RelatoriosController@relatorios');
-
-//Controllers de configurações gerais
-
-
-    Route::get('/config','ImgController@indexConfig');
-    Route::post('/','ImgController@store');
-    Route::get('/config/destroy/{id}', 'ImgController@destroy');
-
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
+require __DIR__.'/auth.php';
