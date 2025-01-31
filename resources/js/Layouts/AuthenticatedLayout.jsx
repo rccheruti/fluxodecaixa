@@ -33,14 +33,14 @@ export default function AuthenticatedLayout({header, children}) {
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    href={route('dashboard')}
-                                    className={route().current('dashboard') ? '' : 'text-gray-700'}
+                                    href={route('credit')}
+                                    className={route().current('credit') ? '' : 'text-gray-700'}
                                 >
                                     Credit
                                 </NavLink>
                                 <NavLink
-                                    href={route('dashboard')}
-                                    className={route().current('dashboard') ? '' : 'text-gray-700'}
+                                    href={route('debit')}
+                                    className={route().current('debit') ? '' : 'text-gray-700'}
                                 >
                                     Debit
                                 </NavLink>
@@ -146,8 +146,21 @@ export default function AuthenticatedLayout({header, children}) {
                         <ResponsiveNavLink
                             href={route('dashboard')}
                             active={route().current('dashboard')}
+                            className={route().current('dashboard') ? '' : 'text-gray-700'}
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('credit')}
+                            className={route().current('credit') ? '' : 'text-gray-700'}
+                        >
+                            Credit
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('debit')}
+                            className={route().current('debit') ? '' : 'text-gray-700'}
+                        >
+                            Debit
                         </ResponsiveNavLink>
                     </div>
 
